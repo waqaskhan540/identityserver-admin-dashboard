@@ -1,6 +1,5 @@
 
 > This project is currently under development and might not be ready for production use.
-
 # IdentityServer Admin Dashboard
 IdentityServer with admin UI for dynamic configuration of clients, users and resources.
 
@@ -10,12 +9,14 @@ This solution is emphasized at providing a seamless configuration experience to 
 ## Build Dependencies
 
 - .NET Core 2.0
+-  MySql Connector for .NET [not required if using SQL-Server]
 -  Visual Studio 2017 [optional]
 
 ## Features
  - EntityFrameworkCore 2.0+ backed stores for configuring users,clients and resources
  - Separate sections for Admins and Clients to manage resources.
  - Built-in support for authentication using external providers for ResourceOwner flow.
+
 
  ## Milestones
 
@@ -27,4 +28,4 @@ This solution is emphasized at providing a seamless configuration experience to 
  - [ ]  Adding a user from admin section.
  - [ ]  ...
 
- ## 
+ 
