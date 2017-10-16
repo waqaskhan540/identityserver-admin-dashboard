@@ -27,5 +27,6 @@ This solution is emphasized at providing a seamless configuration experience to 
  - [ ]  Adding an identity resource from admin section.
  - [ ]  Adding a user from admin section.
  - [ ]  ...
+ - [ ]  ...
 
  
