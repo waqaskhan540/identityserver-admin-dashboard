@@ -1,0 +1,22 @@
+﻿<div class="page-content">
+    <h4> Client login</h4>
+    <hr />
+
+    <p>Provide your client credentials to login as a Client.</p>
+    <form action="#">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="email" id="user_email">
+            <label class="mdl-textfield__label" for="user_email">Email</label>
+        </div>
+        <br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="password" id="user_password">
+            <label class="mdl-textfield__label" for="user_password">Password</label>
+        </div>
+        <br />
+        @*<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+               Login
+            </button>*@
+        <a asp-area="Client" asp-controller="Home" asp-action="Index" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Login</a>
+    </form>
+</div>

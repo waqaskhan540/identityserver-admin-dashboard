@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DF54CC6D-5F2C-49D3-AC74-D305434D43C7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.Dashboard", "src\IdentityServer.Dashboard.csproj", "{69A6EC7C-C9DD-429E-A27C-935F42DE973C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{2C89E43B-7D5F-4600-981A-21C21A590103}"
+	ProjectSection(SolutionItems) = preProject
+		docs\project_structure.md = docs\project_structure.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69A6EC7C-C9DD-429E-A27C-935F42DE973C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69A6EC7C-C9DD-429E-A27C-935F42DE973C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69A6EC7C-C9DD-429E-A27C-935F42DE973C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69A6EC7C-C9DD-429E-A27C-935F42DE973C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{69A6EC7C-C9DD-429E-A27C-935F42DE973C} = {DF54CC6D-5F2C-49D3-AC74-D305434D43C7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A49F662-10D8-4185-AEDD-D939B138C50F}
+	EndGlobalSection
+EndGlobal

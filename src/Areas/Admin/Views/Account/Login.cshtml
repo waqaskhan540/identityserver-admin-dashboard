@@ -1,0 +1,26 @@
+﻿@model IdentityServer.Areas.Admin.ViewModels.AccountViewModels.LoginViewModel
+<div class="page-content">
+    <h4> Administrator login</h4>
+    <hr/>
+
+    <p>Provide your administrator credentials to login as an administrator.</p>
+    <form asp-area="Admin" asp-controller="Account" asp-action="Login" method="post">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" name="Email" type="email" id="user_email">
+            <label class="mdl-textfield__label"  for="user_email">Email</label>
+            <span asp-validation-for="Email" class="mdl-textfield__error"></span>
+        </div>
+        <br/>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" name="Password" type="password" id="user_password">
+            <label class="mdl-textfield__label" for="user_password">Password</label>
+            <span asp-validation-for="Password" class="mdl-textfield__error"></span>
+        </div>
+        <br/>
+        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+           Login
+        </button>
+        <div asp-validation-summary="All" class="text-danger"></div>
+    </form>
+</div>
+

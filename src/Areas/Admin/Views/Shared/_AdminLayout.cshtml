@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-red.min.css" />    
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/jquery-tag-editor/jquery.tag-editor.css"/>
+</head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">IDENTITY SERVER</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="mdl-navigation__link">HOME</a>
+                    <a asp-area="Admin" asp-controller="Clients" asp-action="Index" class="mdl-navigation__link">CLIENTS</a>
+                    <a asp-area="Admin" asp-controller="Resource" asp-action="ApiResources" class="mdl-navigation__link">API RESOURCES</a>
+                    <a asp-area="Admin" asp-controller="Resource" asp-action="IdentityResources" class="mdl-navigation__link">IDENTITY RESOURCES</a>
+                    <a asp-area="Admin" asp-controller="Users" asp-action="Index" class="mdl-navigation__link">USERS</a>
+                    <a asp-area="Admin" asp-controller="Account" asp-action="LogOut" class="mdl-navigation__link">LOGOUT</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Identity Server</span>
+            <nav class="mdl-navigation">
+                <a asp-controller="Home" asp-action="Index" class="mdl-navigation__link">HOME</a>
+                <a asp-area="Admin" asp-controller="Clients" asp-action="Index" class="mdl-navigation__link">CLIENTS</a>                
+                <a asp-area="Admin" asp-controller="Resource" asp-action="ApiResources" class="mdl-navigation__link">API RESOURCES</a>
+                <a asp-area="Admin" asp-controller="Resource" asp-action="IdentityResources" class="mdl-navigation__link">IDENTITY RESOURCES</a>
+         
+                <a asp-area="Admin" asp-controller="Users" asp-action="Index"  class="mdl-navigation__link">USERS</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">@RenderBody()</div>
+        </main>
+    </div>
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/lib/jquery-tag-editor/jquery.caret.min.js"></script>
+    <script src="~/lib/jquery-tag-editor/jquery.tag-editor.min.js"></script>
+    <script src="~/lib/jquery-tag-editor/tag-it.js"></script>
+    @RenderSection("Scripts", false)
+</body>
+</html>

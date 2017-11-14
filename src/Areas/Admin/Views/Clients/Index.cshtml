@@ -1,0 +1,287 @@
+﻿@model IEnumerable<Client>
+
+
+
+<div class="page-content">
+    <br/>
+    <div class="toolbar">
+        <div class="toolbar-title">
+            <h4>Clients</h4>
+        </div>
+        <div class="toolbar-controls">
+            <button id="add-client-action" class="mdl-button mdl-js-button mdl-button--raised">
+                <i class="material-icons">library_add</i>
+                add new
+            </button>
+        </div>
+    </div>
+    <hr style="clear:both" />
+
+    <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp" style="width:100%">
+        <thead>
+            <tr>
+                <th class="mdl-data-table__cell--non-numeric">Client ID</th>
+                <th class="mdl-data-table__cell--non-numeric">Client Name</th>
+                <th class="mdl-data-table__cell--non-numeric">Enabled</th>
+                <th class="mdl-data-table__cell--non-numeric">Token Expiry</th>
+                <th class="mdl-data-table__cell--non-numeric">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var client in Model)
+            {
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">@client.ClientId</td>
+                    <td class="mdl-data-table__cell--non-numeric">@client.ClientName</td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="check-client-enable">
+                            @{ string checkedStatus = client.Enabled ? "checked" : "";}
+                            <input type="checkbox" data-client-id="@client.ClientId" id="check-client-enable" class="mdl-switch__input" @checkedStatus>
+                            <span class="mdl-switch__label"></span>
+                        </label>
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        @client.AccessTokenLifetime
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <button class="mdl-button mdl-js-button mdl-button--icon client-update-action">
+                            <i class="material-icons">update</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon client-delete-action">
+                            <i class="material-icons">delete</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon client-details-action">
+                            <i class="material-icons">details</i>
+                        </button>
+                    </td>
+                </tr>
+
+            }
+           
+                       
+        </tbody>
+    </table>
+
+    @{Html.RenderPartial("_AddClient"); }
+    <dialog class="mdl-dialog" id="client-details-dialog">
+        <h4 class="mdl-dialog__title">Client Details</h4>
+        <div class="mdl-dialog__content">
+            <p>
+                Allowing us to collect data will let us get you the information you want faster.
+            </p>
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button">Agree</button>
+            <button type="button" class="mdl-button close">Disagree</button>
+        </div>
+    </dialog>
+
+    <dialog class="mdl-dialog" id="client-type-dialog" style="width:70%">
+        <h4 class="mdl-dialog__title">Choose Application Type</h4>
+        <div class="mdl-dialog__content">
+            <p>
+                Select the type of client you want to create.
+            </p>
+            <div class="mdl-grid">
+               
+                <div class="mdl-cell mdl-cell--4-col">
+                    <div class="dialog-app-type mdl-card mdl-shadow--1dp">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">SPA</h2>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="create-webapi-client">
+                                Get Started
+                            </a>
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--4-col">
+                    <div class="dialog-app-type mdl-card mdl-shadow--1dp">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Web Application</h2>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                Get Started
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--4-col">
+                    <div class="dialog-app-type mdl-card mdl-shadow--1dp">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Web API</h2>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                Get Started
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+                    
+                    
+                    
+                </div>
+                <div class="mdl-dialog__actions">                    
+                    <button type="button" class="mdl-button close">Cancel</button>
+                </div>
+</dialog>
+
+    <dialog class="mdl-dialog" id="client-details-dialog">
+        <h4 class="mdl-dialog__title">Client Details</h4>
+        <div class="mdl-dialog__content">
+            <p>
+                Allowing us to collect data will let us get you the information you want faster.
+            </p>
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button">Agree</button>
+            <button type="button" class="mdl-button close">Disagree</button>
+        </div>
+    </dialog>
+    <dialog class="mdl-dialog" id="client-update-dialog">
+        <h4 class="mdl-dialog__title">Client Update</h4>
+        <div class="mdl-dialog__content">
+            <p>
+                Allowing us to collect data will let us get you the information you want faster.
+            </p>
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button">Agree</button>
+            <button type="button" class="mdl-button close">Disagree</button>
+        </div>
+    </dialog>
+    <dialog class="mdl-dialog" id="client-delete-dialog">
+        <h4 class="mdl-dialog__title">Delete Client</h4>
+        <div class="mdl-dialog__content">
+            <p>
+                Allowing us to collect data will let us get you the information you want faster.
+            </p>
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button">Agree</button>
+            <button type="button" class="mdl-button close">Disagree</button>
+        </div>
+    </dialog>
+
+    <div id="info-snackbar" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>   
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/lib/dialog-polyfill/dialog-polyfill.js"></script>
+    <script src="~/js/extensions.js"></script>
+    <script src="~/js/helpers.js"></script>
+    <script src="~/js/services/clientService.js"></script>
+    
+
+    <script>             
+        $(function () {
+            $('#secrets').tagEditor({
+                delimeter: ', ',
+                placeholder: "Secrets (comma separated)",
+
+            });
+
+        })
+        //registerDialog(dialogId, actionBtnId)
+        registerDialog("#client-type-dialog", "#add-client-action",null);
+        registerDialog("#add-apiclient-dialog", "#create-webapi-client","#client-type-dialog");
+        registerDialog("#client-details-dialog", ".client-details-action",null);
+        registerDialog("#client-update-dialog" , ".client-update-action",null);
+        registerDialog("#client-delete-dialog", ".client-delete-action",null);  
+
+
+        configureToggle("#check-client-enable", onClientEnableChange);
+
+        var saveBasicConfigBtn = document.querySelector("#save-basic-config");
+        saveBasicConfigBtn && saveBasicConfigBtn.addEventListener("click", saveBasicConfig)
+
+
+         function saveBasicConfig() {
+             toggleLoadingMask();
+
+             var formData = $("#basic-config-form").serialize();
+             //var client_secrets = "";
+             //var secrets = $("#client_secrets").val().split(',').forEach((val, index) => {
+             //    client_secrets += `ClientSecrets=${val}&`;
+             //});
+
+             //client_secrets = client_secrets.slice(0, -1);
+             //formData += client_secrets;
+
+             clientService.addClient("@Url.Action("AddClient","Client")", formData, (data) => {
+                 alert(JSON.stringify(data));
+                 toggleLoadingMask();
+                 switchTabs();
+             }, (data) => {
+                 alert(JSON.stringify(data));
+                 toggleLoadingMask();
+                
+             });
+           
+             
+         }
+
+        function switchTabs() {
+
+            var tabs = document.querySelectorAll(".client-config-tabs .mdl-tabs__panel");
+            var tabSelectors = document.querySelectorAll(".client-config-tabs .mdl-tabs__tab");
+
+            if (tabs && tabs.length > 1 && tabSelectors) {
+                tabSelectors[0].classList.remove("is-active");
+                tabSelectors[1].classList.add("is-active");
+
+                tabs[0].classList.remove("is-active");
+                tabs[1].classList.add("is-active");
+
+            }
+
+        }
+
+
+        function toggleLoadingMask() {
+            var $loader = $(".mdl-progress");
+            $loader.is(":visible") ? $loader.hide() : $loader.show();
+
+        }
+        function onClientEnableChange(e) {
+            
+            var checkedValue = e.target.checked;
+            var clientId = e.target.getAttribute("data-client-id");
+            var url = '@Url.Action("UpdateClientStatus","Client")'+"?clientId=" + clientId + "&enableStatus=" + checkedValue;
+            clientService.updateClientStatus(url, checkedValue, clientId, onClientEnableSuccess, onClientEnableFailed);
+        }
+
+        function onClientEnableSuccess(data) {
+            var infoSnackbar = document.querySelector("#info-snackbar");
+            if (infoSnackbar) {
+                var data = {
+                    message: data.message,
+                    timeout: 2000,
+                }
+                infoSnackbar.MaterialSnackbar.showSnackbar(data);
+            }
+
+        }
+
+        function onClientEnableFailed(err) {
+            var infoSnackbar = document.querySelector("#info-snackbar");
+            if (infoSnackbar) {
+                var data = {
+                    message: "Operation failed due to a network issue.",
+                    timeout: 2000,
+                }
+                infoSnackbar.MaterialSnackbar.showSnackbar(data);
+            }
+        }
+    </script>
+}

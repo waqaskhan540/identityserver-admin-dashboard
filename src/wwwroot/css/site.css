@@ -1,0 +1,94 @@
+﻿
+body {
+    padding:0;
+    margin:0;
+}
+
+.page-content {
+    width:100%;
+}
+.page-content .page-content {
+        width: 70%;
+        margin: auto;
+  color: grey;
+}
+
+.overview_stats {
+    margin-top:15px;
+    float:right;
+}
+
+
+.resource-card-event.mdl-card {
+    width: 256px;
+    height: 128px;
+    background: #3E4EB8;
+}
+
+.resource-card-event > .mdl-card__actions {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.resource-card-event > .mdl-card__title {
+    align-items: flex-start;
+}
+
+    .resource-card-event > .mdl-card__title > h4 {
+        margin-top: 0;
+    }
+
+.resource-card-event > .mdl-card__actions {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+    .resource-card-event > .mdl-card__actions > .material-icons {
+        padding-right: 10px;
+    }
+
+    .resource-card-event > .mdl-card__title,
+    .resource-card-event > .mdl-card__actions,
+    .resource-card-event > .mdl-card__actions > .mdl-button {
+        color: #fff;
+    }
+
+.page-content .toolbar .toolbar-title {
+    float:left;
+}
+.page-content .toolbar .toolbar-controls {
+    float:right;
+}
+
+
+.default-dialog {
+    width:70%
+}
+.dialog-app-type{
+    width:100%;    
+    margin:10px;
+}
+.full-width {
+    width:100%;
+}
+.consent-row {
+   width:50%; 
+   margin:auto;
+}
+
+/*.consent-row .consent-panel .panel-heading {
+   background: rgb(139,195,74);
+   color:white;
+   border-top-right-radius:5px;
+   border-top-left-radius:5px;
+   padding:5px;
+}
+.consent-row .consent-panel i.material-icons{
+    vertical-align:middle
+}
+.consent-row .consent-buttons {
+    margin-top:15px;
+}
+.consent-row .consent-panel .list-group {
+    list-style:none;
+}*/

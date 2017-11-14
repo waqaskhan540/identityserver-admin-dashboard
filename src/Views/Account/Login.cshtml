@@ -1,0 +1,73 @@
+﻿@model LoginViewModel
+
+<div class="page-content">
+    <h4> Login</h4>
+    <hr />
+
+    <p>Local Login</p>
+    @if (Model.EnableLocalLogin)
+    {
+        <form asp-route="Login">
+            <input type="hidden" asp-for="ReturnUrl" />
+
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <label asp-for="Username"></label>
+                <input class="mdl-textfield__input" placeholder="Username" asp-for="Username" autofocus>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <label asp-for="Password"></label>
+                <input type="password" class="mdl-textfield__input" placeholder="Password" asp-for="Password" autocomplete="off">
+            </div>
+            
+            @if (Model.AllowRememberLogin)
+            {
+                <div class="form-group login-remember">
+                    <label asp-for="RememberLogin">
+                        <input asp-for="RememberLogin">
+                        <strong>Remember My Login</strong>
+                    </label>
+                </div>
+            }
+            <div class="form-group">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" name="button" value="login">Login</button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--coloredt" name="button" value="cancel">Cancel</button>
+            </div>
+
+        </form>
+    }
+
+    @if (Model.VisibleExternalProviders.Any())
+    {
+        <div class="col-md-6 col-sm-6 external-providers">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">External Login</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-inline">
+                        @foreach (var provider in Model.VisibleExternalProviders)
+                        {
+                            <li>
+                                <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                                   asp-action="ExternalLogin"
+                                   asp-route-provider="@provider.AuthenticationScheme"
+                                   asp-route-returnUrl="@Model.ReturnUrl">
+                                    @provider.DisplayName
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())
+    {
+        <div class="alert alert-warning">
+            <strong>Invalid login request</strong>
+            There are no login schemes configured for this client.
+        </div>
+    }
+</div>

@@ -1,0 +1,8 @@
+{
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "dialog-polyfill": "0.4.9",
+    "jquery-tag-editor" : "1.0.20"
+  }
+}

@@ -1,0 +1,111 @@
+﻿@model IEnumerable<IdentityResource>
+
+<div class="page-content">
+    <br />
+    <div class="toolbar">
+        <div class="toolbar-title">
+            <h4>Identity Resources</h4>
+        </div>
+        <div class="toolbar-controls">
+            <button id="add-client-action" class="mdl-button mdl-js-button mdl-button--raised">
+                <i class="material-icons">library_add</i>
+                add new
+            </button>
+        </div>
+    </div>
+    <hr style="clear:both" />
+
+    <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp" style="width:100%">
+        <thead>
+            <tr>
+                <th class="mdl-data-table__cell--non-numeric">Name</th>
+                <th>Display Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var identityResource in Model)
+            {
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">@identityResource.Name</td>
+                    <td>@identityResource.DisplayName</td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon client-update-action">
+                            <i class="material-icons">update</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon client-delete-action">
+                            <i class="material-icons">delete</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon client-details-action">
+                            <i class="material-icons">details</i>
+                        </button>
+                    </td>
+                </tr>
+
+            }                                    
+        </tbody>
+    </table>
+
+    <dialog class="mdl-dialog" id="add-client-dialog">
+        <h4 class="mdl-dialog__title">Add New Client</h4>
+        <div class="mdl-dialog__content">
+            <p>
+                Allowing us to collect data will let us get you the information you want faster.
+            </p>
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button">Agree</button>
+            <button type="button" class="mdl-button close">Disagree</button>
+        </div>
+    </dialog>
+    <dialog class="mdl-dialog" id="client-details-dialog">
+        <h4 class="mdl-dialog__title">Client Details</h4>
+        <div class="mdl-dialog__content">
+            <p>
+                Allowing us to collect data will let us get you the information you want faster.
+            </p>
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button">Agree</button>
+            <button type="button" class="mdl-button close">Disagree</button>
+        </div>
+    </dialog>
+    <dialog class="mdl-dialog" id="client-update-dialog">
+        <h4 class="mdl-dialog__title">Client Update</h4>
+        <div class="mdl-dialog__content">
+            <p>
+                Allowing us to collect data will let us get you the information you want faster.
+            </p>
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button">Agree</button>
+            <button type="button" class="mdl-button close">Disagree</button>
+        </div>
+    </dialog>
+    <dialog class="mdl-dialog" id="client-delete-dialog">
+        <h4 class="mdl-dialog__title">Delete Client</h4>
+        <div class="mdl-dialog__content">
+            <p>
+                Allowing us to collect data will let us get you the information you want faster.
+            </p>
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button">Agree</button>
+            <button type="button" class="mdl-button close">Disagree</button>
+        </div>
+    </dialog>
+</div>
+
+@section Scripts {
+    <script src="~/lib/dialog-polyfill/dialog-polyfill.js"></script>
+    <script src="~/js/extensions.js"></script>
+    <script src="~/js/helpers.js"></script>
+
+    <script>
+
+        registerDialog("#add-client-dialog", "#add-client-action");
+        registerDialog("#client-details-dialog", ".client-details-action");
+        registerDialog("#client-update-dialog" , ".client-update-action");
+        registerDialog("#client-delete-dialog" , ".client-delete-action");
+    </script>
+}

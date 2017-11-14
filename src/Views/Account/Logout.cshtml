@@ -1,0 +1,17 @@
+﻿@model LogoutViewModel
+
+
+
+<div class="page-content">
+    <h4>Logout</h4>
+    <hr/>
+    <p>Would you like to logout of IdentityServer?</p>
+    <form asp-action="Logout">
+        <input type="hidden" name="logoutId" value="@Model.LogoutId" />
+        <fieldset>
+            <div class="form-group">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Yes</button>
+            </div>
+        </fieldset>
+    </form>
+</div>

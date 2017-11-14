@@ -1,0 +1,78 @@
+﻿<dialog class="mdl-dialog default-dialog" id="add-apiclient-dialog">
+    <h4 class="mdl-dialog__title">Add WebAPI Client</h4>
+    <div class="mdl-dialog__content">
+        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect client-config-tabs">
+            <div class="mdl-tabs__tab-bar">
+                <a href="#basic-info-panel" class="mdl-tabs__tab is-active">Basic Info</a>
+                <a href="#client-config-panel" class="mdl-tabs__tab">Configuration</a>                
+            </div>
+            <form id="basic-config-form">
+                <div class="mdl-tabs__panel is-active" id="basic-info-panel">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" name="ClientId" id="client_id">
+                                <label class="mdl-textfield__label" for="client_id">Client ID</label>
+                            </div>
+                            <br />
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text"  id="ClientUri" name="ClientUri">
+                                <label class="mdl-textfield__label" for="ClientUri">Client Uri</label>
+                            </div>
+                            <br />   
+                            <button type="button" id="save-basic-config" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Save</button>
+                        </div>
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" name="ClientName"  type="text" id="client_name">
+                                <label class="mdl-textfield__label" for="client_name">Client Name</label>
+                            </div>
+                           
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="mdl-tabs__panel" id="client-config-panel">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="number" name="AccessTokenLifetime" id="AccessTokenLifetime">
+                                <label class="mdl-textfield__label" for="AccessTokenLifetime">Access Token Lifetime</label>
+                            </div>
+                            <br />
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="number" name="IdentityTokenLifetime" id="IdentityTokenLifetime">
+                                <label class="mdl-textfield__label" for="IdentityTokenLifetime">Identity Token Lifetime</label>
+                            </div>
+                            <br />                            
+                            <button type="button" id="save-basic-config" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Save</button>
+                        </div>
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <div class="mdl-textfield mdl-js-textfield">
+                                <input class="mdl-textfield__input" name="ClientSecrets" type="text" id="secrets">
+                                @*<label class="mdl-textfield__label" for="client_name">Client Name</label>*@
+                            </div>
+                           
+                     
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate full-width " style="display:none"></div>
+    </div>
+    <div class="mdl-dialog__actions">
+      
+
+        <button type="button" class="mdl-button close">Cancel</button>
+        
+    </div>
+</dialog>
+
