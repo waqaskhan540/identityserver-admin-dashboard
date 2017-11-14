@@ -1,5 +1,8 @@
 
-> This project is currently under development and might not be ready for production use.
+
+> **This project is currently under development and is not ready for production use.**
+
+
 # IdentityServer Admin Dashboard
 IdentityServer with admin UI for dynamic configuration of clients, users and resources.
 
