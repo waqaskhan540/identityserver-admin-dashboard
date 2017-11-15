@@ -7,6 +7,6 @@ namespace IdentityServer.Dashboard.Configuration
 {
     public static class GlobalConfiguration
     {
-        public static bool IsRunningTestMode = true;
+        public static bool IsRunningTestMode = false;
     }
 }

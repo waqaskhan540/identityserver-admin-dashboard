@@ -64,10 +64,10 @@ namespace IdentityServer.Extensions
                         var superAdmin = new ApplicationUser
                         {
                             Email = "identity.admin@abc.com",
-                            UserName = "identity.admin@abc.pk",
+                            UserName = "identity.admin@abc.com",
                         };
 
-                        var result = userManager.CreateAsync(superAdmin, "identity@123").Result;
+                        var result = userManager.CreateAsync(superAdmin, "Identity@123").Result;
                         if(result.Succeeded)
                         {
                             var adminUser = userManager.FindByEmailAsync(superAdmin.Email).Result;
