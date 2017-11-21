@@ -21,21 +21,25 @@ namespace IdentityServer.Repositories
         public async Task AddAsync(T entity)
         {
             await _dbSet.AddAsync(entity).ConfigureAwait(false);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task AddAsync(IEnumerable<T> entities)
         {
             await _dbSet.AddRangeAsync(entities).ConfigureAwait(false);
+            await _dbContext.SaveChangesAsync();
         }
 
         public void Delete(T entity)
         {
             _dbSet.Remove(entity);
+            _dbContext.SaveChanges();
         }
 
         public void Delete(IEnumerable<T> entities)
         {
             _dbSet.RemoveRange(entities);
+            _dbContext.SaveChanges();
         }
 
         public  IQueryable<T> Get()
@@ -51,11 +55,13 @@ namespace IdentityServer.Repositories
         public void Update(T entity)
         {
             _dbSet.Update(entity);
+            _dbContext.SaveChanges();
         }
 
         public void Update(IEnumerable<T> entities)
         {
             _dbSet.UpdateRange(entities);
+            _dbContext.SaveChanges();
         }
     }
 }

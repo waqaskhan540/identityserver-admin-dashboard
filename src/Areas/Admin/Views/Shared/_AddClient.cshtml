@@ -4,11 +4,13 @@
         <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect client-config-tabs">
             <div class="mdl-tabs__tab-bar">
                 <a href="#basic-info-panel" class="mdl-tabs__tab is-active">Basic Info</a>
-                <a href="#client-config-panel" class="mdl-tabs__tab">Configuration</a>                
+                <a href="#client-config-panel" class="mdl-tabs__tab">Configuration</a>
             </div>
-            <form id="basic-config-form">
-                <div class="mdl-tabs__panel is-active" id="basic-info-panel">
+
+            <div class="mdl-tabs__panel is-active" id="basic-info-panel">
+                <form id="basic-config-form">
                     <div class="mdl-grid">
+
                         <div class="mdl-cell mdl-cell--6-col">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="text" name="ClientId" id="client_id">
@@ -16,63 +18,98 @@
                             </div>
                             <br />
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text"  id="ClientUri" name="ClientUri">
+                                <input class="mdl-textfield__input" type="text" id="ClientUri" name="ClientUri">
                                 <label class="mdl-textfield__label" for="ClientUri">Client Uri</label>
                             </div>
-                            <br />   
+                            <br />
                             <button type="button" id="save-basic-config" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Save</button>
                         </div>
                         <div class="mdl-cell mdl-cell--6-col">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" name="ClientName"  type="text" id="client_name">
+                                <input class="mdl-textfield__input" name="ClientName" type="text" id="client_name">
                                 <label class="mdl-textfield__label" for="client_name">Client Name</label>
                             </div>
-                           
-
-
+                            <div class="mdl-textfield mdl-js-textfield">
+                                <input class="mdl-textfield__input" name="ClientSecrets" type="text" id="secrets">
+                            </div>
 
                         </div>
 
 
                     </div>
-                </div>
-                <div class="mdl-tabs__panel" id="client-config-panel">
+                </form>
+            </div>
+            <div class="mdl-tabs__panel" id="client-config-panel">
+                <form id="client-configurtion">
                     <div class="mdl-grid">
+
                         <div class="mdl-cell mdl-cell--6-col">
+
+                            <input type="hidden" name="ClientId" id="client-id" value="" />
+
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="number" name="AccessTokenLifetime" id="AccessTokenLifetime">
                                 <label class="mdl-textfield__label" for="AccessTokenLifetime">Access Token Lifetime</label>
                             </div>
+
                             <br />
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="number" name="IdentityTokenLifetime" id="IdentityTokenLifetime">
                                 <label class="mdl-textfield__label" for="IdentityTokenLifetime">Identity Token Lifetime</label>
                             </div>
-                            <br />                            
-                            <button type="button" id="save-basic-config" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Save</button>
+                            <br />
+                            <label>Access token type:</label>
+                            <input type="radio" name="AccessTokenType" value="0" />JWT
+                            <input type="radio" name="AccessTokenType" value="1" />Reference
+
+                            <br />
+
+                            <input type="checkbox" name="AlwaysIncludeUserClaimsInIdToken" value="true"/>Include User claims in Id token <br />
+                            <input type="checkbox" name="AlwaysSendClientClaims" value="true" /> Always send client claims<br />
+                            <input type="checkbox" name="Enabled" value="true" /> Enabled <br />
+
+                            <button type="button" id="save-client-config" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Save</button>
                         </div>
                         <div class="mdl-cell mdl-cell--6-col">
-                            <div class="mdl-textfield mdl-js-textfield">
-                                <input class="mdl-textfield__input" name="ClientSecrets" type="text" id="secrets">
-                                @*<label class="mdl-textfield__label" for="client_name">Client Name</label>*@
+                            <div>
+                                <label for="allowed-grant-types">Select Allowed Grant Types :</label> <br />
+                                <input type="checkbox" name="AllowedGrantTypes" value="@GrantType.ResourceOwnerPassword" />password <br />
+                                <input type="checkbox" name="AllowedGrantTypes" value="@GrantType.ClientCredentials" />client credentials<br />
+                                <input type="checkbox" name="AllowedGrantTypes" value="external" />external
                             </div>
-                           
-                     
+                            <div>
 
+                                <label>Choose Allowed API Resources:</label>  <br />
+                                @foreach (var resource in ViewBag.ApiResources)
+                                {
+                                    <input type="checkbox" name="AllowedScopes" value="@resource" />@resource <br />
+                                }
+
+
+                            </div>
+                            <div>
+                                <label>Choose Allowed Identity Resources:</label>   <br />
+                                @foreach (var resource in ViewBag.IdentityResources)
+                                {
+                                    <input type="checkbox" name="AllowedScopes" value="@resource" />@resource <br />
+
+                                }
+
+                            </div>
                         </div>
 
 
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
+
         </div>
         <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate full-width " style="display:none"></div>
     </div>
     <div class="mdl-dialog__actions">
-      
+
 
         <button type="button" class="mdl-button close">Cancel</button>
-        
+
     </div>
 </dialog>
-

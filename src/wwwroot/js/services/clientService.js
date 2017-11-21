@@ -1,5 +1,5 @@
 ﻿var clientService = {
-    addClient: (url, clientData, successCallback, failedCallback) => {
+    post: (url, clientData, successCallback, failedCallback) => {
 
         $.ajax({
             method: "POST",

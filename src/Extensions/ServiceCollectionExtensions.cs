@@ -121,7 +121,7 @@ namespace IdentityServer.Extensions
             services.AddScoped<IProviderRepository, ProviderRepository>();
             services.AddScoped<IPasswordConfigRepository, PasswordConfigRepository>();
             services.AddScoped<IClientRepository, ClientRepository>();
-            services.AddScoped<IResourcerRepository, ResourceRepository>();
+            services.AddScoped<IResourcesRepository, ResourceRepository>();
             services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
             return services;
         }

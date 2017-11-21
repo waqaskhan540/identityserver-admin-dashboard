@@ -59,7 +59,9 @@ namespace IdentityServer.Repositories.IdentityServerRepositories
 
         public void Update(Client entity)
         {
-            
+           // _dbSet.Attach(entity);
+             _dbSet.Update(entity);
+            _dbContext.SaveChanges();
         }
 
         public void Update(IEnumerable<Client> entities)

@@ -44,6 +44,7 @@ namespace IdentityServer.Configuration
                     ClientId = "Test.Client",
                     ClientName = "LDSCore",
                     AllowedGrantTypes = new[] {GrantType.ResourceOwnerPassword,"external"},
+                     
                     ClientSecrets =
                     {
                         new Secret("secret".Sha256())

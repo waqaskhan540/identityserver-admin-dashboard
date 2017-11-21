@@ -12,8 +12,8 @@ namespace IdentityServer.Areas.Admin.Controllers
     [Area("Admin")]
     public class ResourceController:Controller
     {
-        private readonly IResourcerRepository _resourceRepository;
-        public ResourceController(IResourcerRepository resourceRepository)
+        private readonly IResourcesRepository _resourceRepository;
+        public ResourceController(IResourcesRepository resourceRepository)
         {
             _resourceRepository = resourceRepository;
         }

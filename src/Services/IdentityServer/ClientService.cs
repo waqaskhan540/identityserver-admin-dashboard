@@ -4,6 +4,7 @@ using IdentityServer4.EntityFramework.Mappers;
 using IdentityServer4.Models;
 using System;
 using System.Collections.Generic;
+
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,6 +25,12 @@ namespace IdentityServer.Services.IdentityServer
             await _clientRepository.AddAsync(client.ToEntity());            
         }
 
+        public async Task<Client> GetClientById(string Id)
+        {
+            // return await _clientRepository.FindClientByIdAsync(Id);
+            return  _clientRepository.Get(x => x.ClientId == Id).FirstOrDefault().ToModel();
+        }
+
         public bool SetClientStatus(string clientId, bool enableStatus)
         {
             try
@@ -41,6 +48,13 @@ namespace IdentityServer.Services.IdentityServer
             {
                 throw;
             }
+        }
+
+        public void Update(Client client)
+        {
+            var entry = client.ToEntity();
+            entry.Id = 21;
+            _clientRepository.Update(entry);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<Client>
-
+        
 
 
 <div class="page-content">
@@ -133,18 +133,7 @@
                 </div>
 </dialog>
 
-    <dialog class="mdl-dialog" id="client-details-dialog">
-        <h4 class="mdl-dialog__title">Client Details</h4>
-        <div class="mdl-dialog__content">
-            <p>
-                Allowing us to collect data will let us get you the information you want faster.
-            </p>
-        </div>
-        <div class="mdl-dialog__actions">
-            <button type="button" class="mdl-button">Agree</button>
-            <button type="button" class="mdl-button close">Disagree</button>
-        </div>
-    </dialog>
+    
     <dialog class="mdl-dialog" id="client-update-dialog">
         <h4 class="mdl-dialog__title">Client Update</h4>
         <div class="mdl-dialog__content">
@@ -183,7 +172,7 @@
     <script src="~/js/services/clientService.js"></script>
     
 
-    <script>             
+    <script>
         $(function () {
             $('#secrets').tagEditor({
                 delimeter: ', ',
@@ -197,38 +186,72 @@
         registerDialog("#add-apiclient-dialog", "#create-webapi-client","#client-type-dialog");
         registerDialog("#client-details-dialog", ".client-details-action",null);
         registerDialog("#client-update-dialog" , ".client-update-action",null);
-        registerDialog("#client-delete-dialog", ".client-delete-action",null);  
+        registerDialog("#client-delete-dialog", ".client-delete-action",null);
 
 
         configureToggle("#check-client-enable", onClientEnableChange);
 
         var saveBasicConfigBtn = document.querySelector("#save-basic-config");
-        saveBasicConfigBtn && saveBasicConfigBtn.addEventListener("click", saveBasicConfig)
+        saveBasicConfigBtn && saveBasicConfigBtn.addEventListener("click", saveBasicConfig);
 
+        var saveClientConfigBtn = document.querySelector("#save-client-config");
+        saveClientConfigBtn && saveClientConfigBtn.addEventListener("click", saveClientConfiguration);
+
+        function saveClientConfiguration() {
+            var formData = $("#client-configurtion").serialize();
+            
+             clientService.post("@Url.Action("UpdateClient", "Client")", formData, (result) => {                 
+                 if (result.success) {
+                   
+                     toggleLoadingMask();
+                     showNotification(result.message);
+                     return;
+                 }
+                 toggleLoadingMask();
+                 showNotification(result.message);
+
+             }, (data) => {
+
+                 toggleLoadingMask();
+                 data.responseJSON.message && showNotification(data.responseJSON.message);
+
+             });
+
+        }
 
          function saveBasicConfig() {
              toggleLoadingMask();
 
              var formData = $("#basic-config-form").serialize();
-             //var client_secrets = "";
-             //var secrets = $("#client_secrets").val().split(',').forEach((val, index) => {
-             //    client_secrets += `ClientSecrets=${val}&`;
-             //});
-
-             //client_secrets = client_secrets.slice(0, -1);
-             //formData += client_secrets;
-
-             clientService.addClient("@Url.Action("AddClient","Client")", formData, (data) => {
-                 alert(JSON.stringify(data));
-                 toggleLoadingMask();
-                 switchTabs();
-             }, (data) => {
-                 alert(JSON.stringify(data));
-                 toggleLoadingMask();
-                
+             var client_secrets = "";
+             var secrets = $("#secrets").val().split(',').forEach((val, index) => {
+                 client_secrets += `ClientSecrets.Value=${val}&`;
              });
-           
-             
+
+             client_secrets = client_secrets.slice(0, -1);
+             formData += client_secrets;
+
+
+
+             clientService.post("@Url.Action("AddClient","Client")", formData, (result) => {
+                
+                 if (result.success) {
+                     $("#client-id").val(result.data.client_id);
+                     toggleLoadingMask();
+                     switchTabs();
+                     return;
+                 }
+                 toggleLoadingMask();
+                 showNotification(result.message);
+
+             }, (data) => {
+
+                 toggleLoadingMask();
+                 data.responseJSON.message && showNotification(data.responseJSON.message);
+
+             });
+
+
          }
 
         function switchTabs() {
@@ -254,7 +277,7 @@
 
         }
         function onClientEnableChange(e) {
-            
+
             var checkedValue = e.target.checked;
             var clientId = e.target.getAttribute("data-client-id");
             var url = '@Url.Action("UpdateClientStatus","Client")'+"?clientId=" + clientId + "&enableStatus=" + checkedValue;
@@ -262,26 +285,25 @@
         }
 
         function onClientEnableSuccess(data) {
-            var infoSnackbar = document.querySelector("#info-snackbar");
-            if (infoSnackbar) {
-                var data = {
-                    message: data.message,
-                    timeout: 2000,
-                }
-                infoSnackbar.MaterialSnackbar.showSnackbar(data);
-            }
+            showNotification(data.message);
 
         }
 
         function onClientEnableFailed(err) {
+
+            showNotification("Operation failed due to network issue.");
+        }
+
+        function showNotification(msg) {
             var infoSnackbar = document.querySelector("#info-snackbar");
             if (infoSnackbar) {
                 var data = {
-                    message: "Operation failed due to a network issue.",
+                    message: msg,
                     timeout: 2000,
                 }
                 infoSnackbar.MaterialSnackbar.showSnackbar(data);
             }
+
         }
     </script>
 }

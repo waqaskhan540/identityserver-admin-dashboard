@@ -11,5 +11,7 @@ namespace IdentityServer.Interfaces.IdentityServer
     {
         bool SetClientStatus(string clientId, bool enableStatus);
         Task AddClient(Client client);
+        Task<Client> GetClientById(string Id);
+        void Update(Client client);
     }
 }

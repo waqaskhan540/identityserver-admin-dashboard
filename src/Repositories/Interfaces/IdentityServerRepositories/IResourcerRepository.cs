@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IdentityServer.Repositories.Interfaces.IdentityServerRepositories
 {
-    public interface IResourcerRepository : IResourceStore
+    public interface IResourcesRepository : IResourceStore
     {
         IQueryable<ApiResource> GetApiResources();
         IQueryable<IdentityResource> GetIdentityResources();

@@ -10,7 +10,7 @@ using IdentityServer4.EntityFramework.Entities;
 
 namespace IdentityServer.Repositories.IdentityServerRepositories
 {
-    public class ResourceRepository : ResourceStore, IResourcerRepository
+    public class ResourceRepository : ResourceStore, IResourcesRepository
     {
         private readonly IConfigurationDbContext _dbContext;
         public ResourceRepository(IConfigurationDbContext context, ILogger<ResourceStore> logger) : base(context, logger)
