@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Client>
+<table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp" style="width:100%">
+        <thead>
+            <tr>
+                <th class="mdl-data-table__cell--non-numeric">Client ID</th>
+                <th class="mdl-data-table__cell--non-numeric">Client Name</th>
+                <th class="mdl-data-table__cell--non-numeric">Enabled</th>
+                <th class="mdl-data-table__cell--non-numeric">Token Expiry</th>
+                <th class="mdl-data-table__cell--non-numeric">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var client in Model)
+            {
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">@client.ClientId</td>
+                    <td class="mdl-data-table__cell--non-numeric">@client.ClientName</td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="check-client-enable">
+                            @{ string checkedStatus = client.Enabled ? "checked" : "";}
+                            <input type="checkbox" data-client-id="@client.ClientId" id="check-client-enable" class="mdl-switch__input" @checkedStatus>
+                            <span class="mdl-switch__label"></span>
+                        </label>
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        @client.AccessTokenLifetime
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <button class="mdl-button mdl-js-button mdl-button--icon client-update-action">
+                            <i class="material-icons">update</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon client-delete-action">
+                            <i class="material-icons">delete</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon client-details-action">
+                            <i class="material-icons">details</i>
+                        </button>
+                    </td>
+                </tr>
+
+            }
+
+
+        </tbody>
+    </table>

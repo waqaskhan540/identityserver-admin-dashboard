@@ -1,4 +1,5 @@
-﻿using IdentityServer.Repositories.Interfaces.IdentityServerRepositories;
+﻿using IdentityServer.Dashboard.Areas.Admin.ViewComponents;
+using IdentityServer.Repositories.Interfaces.IdentityServerRepositories;
 using IdentityServer4.EntityFramework.Mappers;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
@@ -24,14 +25,17 @@ namespace IdentityServer.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            var clients = _clientRepository.Get().ToList();
-            var list = new List<IdentityServer4.Models.Client>();
-            clients.ForEach((ele) => list.Add(ele.ToModel()));
+           
 
             ViewBag.ApiResources = _resourceRepository.GetApiResources().ToList().Select(x => x.Name);
             ViewBag.IdentityResources = _resourceRepository.GetIdentityResources().ToList().Select(x => x.Name);
            
-            return View(list);
+            return View();
+        }
+
+        public IActionResult GetClients()
+        {
+            return ViewComponent(nameof(ClientList));
         }
     }
 }

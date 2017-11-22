@@ -62,6 +62,7 @@ namespace IdentityServer.Areas.Admin.Controllers
 
             ModelState.AddModelError("", Messages.INVALID_LOGIN_REQUEST);
             return View(model);
+            
         }
 
         [HttpGet]

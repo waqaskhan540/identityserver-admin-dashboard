@@ -74,6 +74,7 @@ namespace IdentityServer.Areas.Admin.Controllers.Api
 
 
                 var entity  = model.ToEntity();
+
                 client.AllowedGrantTypes = entity.AllowedGrantTypes;
                 client.AllowedScopes = entity.AllowedScopes;
                 client.AlwaysIncludeUserClaimsInIdToken = entity.AlwaysIncludeUserClaimsInIdToken;
@@ -81,6 +82,7 @@ namespace IdentityServer.Areas.Admin.Controllers.Api
                 client.AlwaysSendClientClaims = entity.AlwaysSendClientClaims;
                 client.AccessTokenLifetime = entity.AccessTokenLifetime;
                 client.IdentityTokenLifetime = entity.IdentityTokenLifetime;
+                client.AllowOfflineAccess = entity.AllowOfflineAccess;
 
                 _clientRepository.Update(client);
 
